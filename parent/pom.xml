@@ -16,14 +16,15 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
-
-		<!--在properties标签中，添加各依赖包的版本号，方便管理更加清晰-->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+
+		<!--在properties标签中，添加各依赖包的版本号，方便管理更加清晰-->
+		<project.version>0.0.1-SNAPSHOT</project.version>
 	</properties>
 
 	<dependencyManagement>
@@ -39,23 +40,39 @@
 			<!--<artifactId>spring-boot-starter-test</artifactId>-->
 			<!--<scope>test</scope>-->
 			<!--</dependency>-->
+
+			<!--各个模块-->
+			<dependency>
+				<groupId>com.inspire</groupId>
+				<artifactId>dao</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.inspire</groupId>
+				<artifactId>heart</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.inspire</groupId>
+				<artifactId>po</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.inspire</groupId>
+				<artifactId>service</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
-
-	<!--删除打包插件，只需要在需要打包的模块中添加插件-->
-	<!--<build>-->
-		<!--<plugins>-->
-			<!--<plugin>-->
-				<!--<groupId>org.springframework.boot</groupId>-->
-				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
-			<!--</plugin>-->
-		<!--</plugins>-->
-	<!--</build>-->
 
 
 	<modules>
 		<module>master</module>
 		<module>service</module>
+		<module>dao</module>
+		<module>po</module>
+		<module>heart</module>
 	</modules>
 
 

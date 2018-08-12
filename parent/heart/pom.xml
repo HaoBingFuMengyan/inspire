@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.inspire</groupId>
-	<artifactId>master</artifactId>
+	<artifactId>heart</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>master</name>
+	<name>heart</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
@@ -29,27 +29,5 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<!--添加打包插件-->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<!--指定主函数入口-->
-					<mainClass>com.inspire.MasterApplication</mainClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal><!--可以把依赖的包都打包到生成的Jar包中-->
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
-
 
 </project>

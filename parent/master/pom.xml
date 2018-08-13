@@ -34,7 +34,26 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<!-- 工具类 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
 
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+
+		<!--使用lombok-->
+		<!--<dependency>-->
+			<!--<groupId>org.projectlombok</groupId>-->
+			<!--<artifactId>lombok</artifactId>-->
+		<!--</dependency>-->
 		<!-- springboot 内置tomcat容器不支持jsp 引入外部tomact支持jsp web核心组件-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->

@@ -25,6 +25,11 @@
 
 		<!--在properties标签中，添加各依赖包的版本号，方便管理更加清晰-->
 		<project.version>0.0.1-SNAPSHOT</project.version>
+		<lombok.version>1.18.0</lombok.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
+		<guava.version>14.0.1</guava.version>
+		<kaptcha.version>2.3.2</kaptcha.version>
+		<commons-io.version>2.4</commons-io.version>
 	</properties>
 
 	<dependencyManagement>
@@ -63,9 +68,48 @@
 				<version>${project.version}</version>
 			</dependency>
 
+			<!-- 工具类 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.8</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-beanutils</groupId>
+				<artifactId>commons-beanutils</artifactId>
+				<version>1.8.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<!--使用lombok-->
+			<!--<dependency>-->
+				<!--<groupId>org.projectlombok</groupId>-->
+				<!--<artifactId>lombok</artifactId>-->
+				<!--<version>${lombok.version}</version>-->
+			<!--</dependency>-->
+
 		</dependencies>
 	</dependencyManagement>
-
 
 	<modules>
 		<module>master</module>
@@ -74,6 +118,4 @@
 		<module>po</module>
 		<module>heart</module>
 	</modules>
-
-
 </project>

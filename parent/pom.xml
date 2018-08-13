@@ -102,11 +102,12 @@
 				<version>${guava.version}</version>
 			</dependency>
 			<!--使用lombok-->
-			<!--<dependency>-->
-				<!--<groupId>org.projectlombok</groupId>-->
-				<!--<artifactId>lombok</artifactId>-->
-				<!--<version>${lombok.version}</version>-->
-			<!--</dependency>-->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<optional>true</optional>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>

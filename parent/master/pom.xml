@@ -50,10 +50,10 @@
 		</dependency>
 
 		<!--使用lombok-->
-		<!--<dependency>-->
-			<!--<groupId>org.projectlombok</groupId>-->
-			<!--<artifactId>lombok</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 		<!-- springboot 内置tomcat容器不支持jsp 引入外部tomact支持jsp web核心组件-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->

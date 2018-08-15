@@ -18,7 +18,7 @@ public class DataSourceConfiguration {
     public DataSource dataSource() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.sqlite.JDBC");
-        dataSourceBuilder.url("jdbc:sqlite:" +System.getProperty("user.dir")+ "/kuink.db");
+        dataSourceBuilder.url("jdbc:sqlite:" +System.getProperty("user.dir")+ "/inspire.db");
         dataSourceBuilder.type(SQLiteDataSource.class);
         return dataSourceBuilder.build();
     }

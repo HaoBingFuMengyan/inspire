@@ -18,7 +18,11 @@
 	</parent>
 
 	<dependencies>
-
+		<!--引入dao模块-->
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>dao</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

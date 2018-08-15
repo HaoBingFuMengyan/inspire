@@ -65,6 +65,13 @@
 			<artifactId>sqlite-jdbc</artifactId>
 		</dependency>
 
+		<!--引入service模块-->
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>service</artifactId>
+		</dependency>
+
+
 		<!-- springboot 内置tomcat容器不支持jsp 引入外部tomact支持jsp web核心组件-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->

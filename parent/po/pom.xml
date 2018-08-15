@@ -18,7 +18,11 @@
 	</parent>
 
 	<dependencies>
-
+		<!--引入heart模块-->
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>heart</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

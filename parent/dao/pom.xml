@@ -39,7 +39,16 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
+		<!--引入po、heart模块-->
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>po</artifactId>
+		</dependency>
 
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>heart</artifactId>
+		</dependency>
 
 	</dependencies>
 

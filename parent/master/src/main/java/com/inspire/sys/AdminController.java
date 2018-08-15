@@ -17,4 +17,8 @@ public class AdminController {
         model.addAttribute("msg","您好，springboot");
         return "sys/index";
     }
+
+    public static void main(String[] args) {
+        log.info(System.getProperty("user.dir"));
+    }
 }

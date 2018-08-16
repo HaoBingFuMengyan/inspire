@@ -34,6 +34,8 @@
 		<fastjson.version>1.2.29</fastjson.version>
 		<commons-dbcp2.version>2.1.1</commons-dbcp2.version>
 		<spring-boot-starter-data-jpa.version>2.0.0.RELEASE</spring-boot-starter-data-jpa.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<pinyin4j.version>2.5.0</pinyin4j.version>
 	</properties>
 
 	<dependencyManagement>
@@ -136,6 +138,20 @@
 				<version>${commons-dbcp2.version}</version>
 			</dependency>
 
+			<!-- servlet 依赖包 -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${javax.servlet-api.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!--中文转英文插件-->
+			<dependency>
+				<groupId>pinyin4j</groupId>
+				<artifactId>pinyin4j</artifactId>
+				<version>${pinyin4j.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>

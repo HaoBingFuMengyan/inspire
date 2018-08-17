@@ -27,8 +27,7 @@ public class OperatorService extends BaseService<Operator> {
 	}
 
 	public Operator findBySusername(String susername){
-//		return this.operatorDao.findBySusername(susername);
-		return new Operator();
+		return this.operatorDao.findBySusername(susername);
 	}
 
 }

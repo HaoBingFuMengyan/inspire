@@ -1,11 +1,5 @@
 package com.inspire.utils;
 
-import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
-import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -989,34 +983,34 @@ public class StringHelper {
      * @return
      * @author liuwei
      */
-    private static String getFullSpellStr(String chinese) {
-        int _position=0;
-        if (chinese == null) {
-            return null;
-        }
-        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);// 小写
-        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);// 不标声调
-        format.setVCharType(HanyuPinyinVCharType.WITH_V);// u:的声母替换为v
-        try {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < chinese.length(); i++) {
-                String[] array = PinyinHelper.toHanyuPinyinStringArray(chinese.charAt(i), format);
-                if (array == null || array.length == 0) {
-                    String s=chinese.substring(i, i+1);
-                    sb.append(s);
-                    continue;
-                }
-                String s = array[0];// 不管多音字,只取第一个
-                String pinyin = String.valueOf(s.charAt(0)).toUpperCase().concat(s.substring(1));
-                sb.append(pinyin);
-            }
-            return sb.toString().toUpperCase();
-        } catch (BadHanyuPinyinOutputFormatCombination e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    private static String getFullSpellStr(String chinese) {
+//        int _position=0;
+//        if (chinese == null) {
+//            return null;
+//        }
+//        HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+//        format.setCaseType(HanyuPinyinCaseType.LOWERCASE);// 小写
+//        format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);// 不标声调
+//        format.setVCharType(HanyuPinyinVCharType.WITH_V);// u:的声母替换为v
+//        try {
+//            StringBuilder sb = new StringBuilder();
+//            for (int i = 0; i < chinese.length(); i++) {
+//                String[] array = PinyinHelper.toHanyuPinyinStringArray(chinese.charAt(i), format);
+//                if (array == null || array.length == 0) {
+//                    String s=chinese.substring(i, i+1);
+//                    sb.append(s);
+//                    continue;
+//                }
+//                String s = array[0];// 不管多音字,只取第一个
+//                String pinyin = String.valueOf(s.charAt(0)).toUpperCase().concat(s.substring(1));
+//                sb.append(pinyin);
+//            }
+//            return sb.toString().toUpperCase();
+//        } catch (BadHanyuPinyinOutputFormatCombination e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     /**
      * 获取字符串内的所有汉字的汉语拼音并大写或者小写 注意：isUpperCase 为true 全部大写，false全部小写
@@ -1046,9 +1040,9 @@ public class StringHelper {
      * @return
      * @author liuwei
      */
-    public static String getFullSpell(final String chinese) {
-        return getFullSpellStr(chinese);
-    }
+//    public static String getFullSpell(final String chinese) {
+//        return getFullSpellStr(chinese);
+//    }
 
     /**
      * 获取字符串内的所有汉字的汉语拼音的首字母并大写 注意：传入参数必须全部为中文，数字或者字母会被忽略 汉字拼音的首字母并大写，不管多音字，取第一个
@@ -1057,34 +1051,34 @@ public class StringHelper {
      * @return
      * @author liuwei
      */
-    public static String getFirstSpell(String chinese) {
-        if (chinese == null) {
-            return null;
-        }
-        try {
-            HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
-            format.setCaseType(HanyuPinyinCaseType.LOWERCASE);// 小写
-            format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);// 不标声调
-            format.setVCharType(HanyuPinyinVCharType.WITH_V);// u:的声母替换为v
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < chinese.length(); i++) {
-                String[] array = PinyinHelper.toHanyuPinyinStringArray(chinese.charAt(i), format);
-                if (array == null || array.length == 0) {
-                    String s=(chinese.substring(i, i+1)).replaceAll("[a-z]", "");
-                    sb.append(s);
-                    continue;
-                }
-                String s = array[0];// 不管多音字,只取第一个
-                String pinyin = String.valueOf(s.charAt(0)).toUpperCase();
-                sb.append(pinyin);
-            }
-            return sb.toString().toUpperCase();
-        } catch (BadHanyuPinyinOutputFormatCombination e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static String getFirstSpell(String chinese) {
+//        if (chinese == null) {
+//            return null;
+//        }
+//        try {
+//            HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
+//            format.setCaseType(HanyuPinyinCaseType.LOWERCASE);// 小写
+//            format.setToneType(HanyuPinyinToneType.WITHOUT_TONE);// 不标声调
+//            format.setVCharType(HanyuPinyinVCharType.WITH_V);// u:的声母替换为v
+//
+//            StringBuilder sb = new StringBuilder();
+//            for (int i = 0; i < chinese.length(); i++) {
+//                String[] array = PinyinHelper.toHanyuPinyinStringArray(chinese.charAt(i), format);
+//                if (array == null || array.length == 0) {
+//                    String s=(chinese.substring(i, i+1)).replaceAll("[a-z]", "");
+//                    sb.append(s);
+//                    continue;
+//                }
+//                String s = array[0];// 不管多音字,只取第一个
+//                String pinyin = String.valueOf(s.charAt(0)).toUpperCase();
+//                sb.append(pinyin);
+//            }
+//            return sb.toString().toUpperCase();
+//        } catch (BadHanyuPinyinOutputFormatCombination e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     /***
      * 判断字符串中是否包含中文 boolean

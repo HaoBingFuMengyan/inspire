@@ -65,7 +65,22 @@
 			<artifactId>sqlite-jdbc</artifactId>
 		</dependency>
 
-		<!--引入service模块-->
+		<!--引入模块-->
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>heart</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>dao</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>po</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.inspire</groupId>
 			<artifactId>service</artifactId>

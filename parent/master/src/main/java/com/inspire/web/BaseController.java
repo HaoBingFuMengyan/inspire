@@ -1,78 +1,74 @@
-//package com.inspire.web;
-//
-//import com.hbf.exception.ServiceException;
-//import com.hbf.ext.ExtResult;
-//import com.hbf.jpa.BaseService;
-//import com.hbf.persistence.PageUtils;
-//import com.hbf.utils.B;
-//import org.apache.commons.beanutils.BeanUtils;
-//import org.apache.commons.lang3.StringUtils;
-//import org.apache.shiro.SecurityUtils;
-//import org.apache.shiro.authz.AuthorizationException;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.domain.Page;
-//import org.springframework.data.domain.PageRequest;
-//import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.ResponseBody;
-//import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-//
-//import javax.servlet.ServletRequest;
-//import javax.validation.Valid;
-//import javax.validation.Validator;
-//import java.util.Map;
-//
-//
-///**
-// * 控制器支持类
-// *
-// * @author haobingfu
-// */
-//public abstract class BaseController<T, V> {
-//    /**
-//     * 日志对象
-//     */
-//    protected Logger logger = LoggerFactory.getLogger(getClass());
-//
-//    /**
-//     * 验证Bean实例对象
-//     */
-//    @Autowired
-//    protected Validator validator;
-//
-//    protected abstract BaseService<T> getBaseService();
-//
-//    protected abstract String getPackName();
-//
-//    protected abstract String getObjectName();
-//
-//    public String getDefaultSort() {
-//        return "";
-//    }
-//
-//    @ModelAttribute
-//    public void prepareSave(
-//            @RequestParam(value = "id", defaultValue = "") String id,
-//            Model model) {
-//
-//        if (StringUtils.isNotBlank(id)) {
-//            T product = getBaseService().findOne(id);
-//            if (product != null) {
-//                try {
-//                    model.addAttribute("oriObj", BeanUtils.cloneBean(product));
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                model.addAttribute("model", poToVo(product));
-//            }
-//
-//        }
-//    }
-//
+package com.inspire.web;
+
+import com.inspire.jpa.BaseService;
+import com.inspire.persistence.PageUtils;
+import com.inspire.utils.B;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.ServletRequest;
+import javax.validation.Valid;
+import javax.validation.Validator;
+import java.util.Map;
+
+
+/**
+ * 控制器支持类
+ *
+ * @author haobingfu
+ */
+public abstract class BaseController<T, V> {
+    /**
+     * 日志对象
+     */
+    protected Logger logger = LoggerFactory.getLogger(getClass());
+
+    /**
+     * 验证Bean实例对象
+     */
+    @Autowired
+    protected Validator validator;
+
+    protected abstract BaseService<T> getBaseService();
+
+    protected abstract String getPackName();
+
+    protected abstract String getObjectName();
+
+    public String getDefaultSort() {
+        return "";
+    }
+
+    @ModelAttribute
+    public void prepareSave(
+            @RequestParam(value = "id", defaultValue = "") String id,
+            Model model) {
+
+        if (StringUtils.isNotBlank(id)) {
+            T product = getBaseService().findOne(id);
+            if (product != null) {
+                try {
+                    model.addAttribute("oriObj", BeanUtils.cloneBean(product));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                model.addAttribute("model", poToVo(product));
+            }
+
+        }
+    }
+
 //    /**
 //     * list集合
 //     *
@@ -205,16 +201,16 @@
 //            return ExtResult.failure("操作出错，请重试或联系管理员");
 //        }
 //    }
-//
-//
-//    @SuppressWarnings("unchecked")
-//    private V poToVo(T obj) {
-//        return (V) obj;
-//    }
-//
-//    @SuppressWarnings("unchecked")
-//    protected T voToPo(V obj) {
-//        return (T) obj;
-//    }
-//
-//}
+
+
+    @SuppressWarnings("unchecked")
+    private V poToVo(T obj) {
+        return (V) obj;
+    }
+
+    @SuppressWarnings("unchecked")
+    protected T voToPo(V obj) {
+        return (T) obj;
+    }
+
+}

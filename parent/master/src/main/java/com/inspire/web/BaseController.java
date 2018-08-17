@@ -69,30 +69,30 @@ public abstract class BaseController<T, V> {
         }
     }
 
-//    /**
-//     * list集合
-//     *
-//     * @param start
-//     * @param limit
-//     * @param sort
-//     * @param model
-//     * @param request
-//     * @return
-//     */
-//    @RequestMapping(value = "list.shtml")
-//    protected String dolist(
-//            @RequestParam(value = "start", defaultValue = "0") int start,
-//            @RequestParam(value = "limit", defaultValue = PageUtils.Limit) int limit,
-//            @RequestParam(value = "sort", defaultValue = "") String sort, Model model,
-//            ServletRequest request) {
-//        if (B.Y(sort))
-//            sort = getDefaultSort();
-////        checkPermissionQuery(request);
-//        Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, model);
-//        model.addAttribute("list", list(start, limit, sort, searchParams));
-//        return getPackName() + "/" + getObjectName();
-//    }
-//
+    /**
+     * list集合
+     *
+     * @param start
+     * @param limit
+     * @param sort
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "list.shtml")
+    protected String dolist(
+            @RequestParam(value = "start", defaultValue = "0") int start,
+            @RequestParam(value = "limit", defaultValue = PageUtils.Limit) int limit,
+            @RequestParam(value = "sort", defaultValue = "") String sort, Model model,
+            ServletRequest request) {
+        if (B.Y(sort))
+            sort = getDefaultSort();
+//        checkPermissionQuery(request);
+        Map<String, Object> searchParams = Servlets.getParametersStartingWith(request, model);
+        model.addAttribute("list", list(start, limit, sort, searchParams));
+        return getPackName() + "/" + getObjectName();
+    }
+
 //    /**
 //     * 默认查询权限
 //     *
@@ -102,43 +102,43 @@ public abstract class BaseController<T, V> {
 //        SecurityUtils.getSubject().checkPermission(
 //                this.getObjectName() + ":" + "query");
 //    }
-//
-//    public Page<T> list(int start, int limit, String sort, Map<String, Object> searchParams) {
-//        String[] s = new String[]{""};
-//        if (StringUtils.isNotEmpty(sort)) {
-//            s = sort.split("\\,");
-//        }
-//        PageRequest page = PageUtils.page(start, limit, s);
-//
-//        return getBaseService().listPage(page, searchParams);
-//
-//    }
-//
-//    /**
-//     * 用于增，改，查的详情
-//     *
-//     * @param model
-//     * @param id
-//     * @return
-//     */
-//    @RequestMapping(value = "detail.shtml")
-//    public String detail(String id, Model model, ServletRequest request) {
-//        try {
-//            Map<String, Object> params = Servlets.getParametersStartingWith(
-//                    request, "param_");
-//            if (B.N(id)) {  //修改或查询
-//                model.addAttribute("data", getBaseService().findOne(id));
-//            } else {//新增
-//                model.addAttribute("data", this.getBaseService().getDomainClass().newInstance());
-//            }
-//            model.addAllAttributes(params);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            Msg.error(model, "操作失败");
-//        }
-//        return getPackName() + "/" + getObjectName() + "-detail";
-//    }
-//
+
+    public Page<T> list(int start, int limit, String sort, Map<String, Object> searchParams) {
+        String[] s = new String[]{""};
+        if (StringUtils.isNotEmpty(sort)) {
+            s = sort.split("\\,");
+        }
+        PageRequest page = PageUtils.page(start, limit, s);
+
+        return getBaseService().listPage(page, searchParams);
+
+    }
+
+    /**
+     * 用于增，改，查的详情
+     *
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "detail.shtml")
+    public String detail(String id, Model model, ServletRequest request) {
+        try {
+            Map<String, Object> params = Servlets.getParametersStartingWith(
+                    request, "param_");
+            if (B.N(id)) {  //修改或查询
+                model.addAttribute("data", getBaseService().findOne(id));
+            } else {//新增
+                model.addAttribute("data", this.getBaseService().getClass().newInstance());
+            }
+            model.addAllAttributes(params);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Msg.error(model, "操作失败");
+        }
+        return getPackName() + "/" + getObjectName() + "-detail";
+    }
+
 //    /**
 //     * 保存
 //     */

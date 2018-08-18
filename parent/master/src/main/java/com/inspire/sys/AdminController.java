@@ -22,7 +22,7 @@ public class AdminController {
     @GetMapping(value="login.html")
     public String login(Model model){
         model.addAttribute("debug","");
-        log.info("欢迎登录");
+        log.info("欢迎使用企业微信点餐系统后台管理");
         return "sys/login";
     }
 

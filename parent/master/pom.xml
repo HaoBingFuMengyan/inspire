@@ -96,6 +96,17 @@
 			<artifactId>shiro-ehcache</artifactId>
 		</dependency>
 
+		<!--面向切面编程管理系统日志，事务管理-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<!--引用GSON,用于打印-->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
 		<!-- springboot 内置tomcat容器不支持jsp 引入外部tomact支持jsp web核心组件-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->

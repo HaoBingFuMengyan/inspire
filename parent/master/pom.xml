@@ -107,12 +107,6 @@
 			<artifactId>gson</artifactId>
 		</dependency>
 
-		<!--使用google生成验证码架包-->
-		<dependency>
-			<groupId>com.google.code</groupId>
-			<artifactId>kaptcha</artifactId>
-		</dependency>
-
 		<!-- springboot 内置tomcat容器不支持jsp 引入外部tomact支持jsp web核心组件-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->

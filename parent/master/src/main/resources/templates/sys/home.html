@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="include/head.html">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
     <meta charset="utf-8">
@@ -16,6 +15,8 @@
 
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/><![endif]-->
+
+    <div th:include="include/head :: common" th:remove="tag"></div>
 
     <link rel="shortcut icon" th:href="@{../../static/bootstrap-table-master/docs/favicon.ico}">
 
@@ -105,6 +106,22 @@
                             <a class="J_menuItem" th:href="@{table_bootstrap.html}">Bootstrap Table
                                 <span class="label label-danger pull-right">推荐</span></a>
                         </li>
+                        <li>
+                            <a class="J_menuItem" th:href="@{/sys/menu/issndex.shtml}">菜单管理</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" th:href="@{/role/indessx.shtml}">DataTables</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" th:href="@{table_jqgssrid.html}">jqGrid</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" th:href="@{table_foo_tassble.html}">Foo Tables</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" th:href="@{table_bootssstrap.html}">Bootstrap Table
+                                <span class="label label-danger pull-right">推荐</span></a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -119,7 +136,7 @@
             </button>
             <nav class="page-tabs J_menuTabs" style="margin-left:90px;width:auto;">
                 <div class="page-tabs-content" style="line-height:31px;">
-                    <a th:href="@{''}"  class="active J_menuTab" data-id="/home.shtml">首页</a>
+                    <a th:href="@{/index.shtml}"  class="active J_menuTab" data-id="/index.shtml">首页</a>
                 </div>
             </nav>
             <button class="roll-nav roll-right J_tabRight"><i class="fa fa-forward"></i>
@@ -141,8 +158,11 @@
             <a th:href="@{/logout.shtml}" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
         </div>
         <div class="row J_mainContent" id="content-main" style="background-color: lightgrey;">
-            <!--<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${ctx}/main.shtml" frameborder="0"-->
-                    <!--data-id="${ctx}/main.shtml" seamless></iframe>-->
+            <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/main.shtml}" frameborder="0"
+                    data-id="/main.shtml" seamless></iframe>
+
+            <!--主体插入位置-->
+            <!--<div layout:fragment="content"></div>-->
         </div>
     </div>
     <!--右侧部分结束-->

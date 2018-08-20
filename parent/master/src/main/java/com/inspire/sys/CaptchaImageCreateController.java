@@ -1,6 +1,7 @@
 package com.inspire.sys;
 
 import com.inspire.utils.RandomValidateCodeUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class CaptchaImageCreateController {
-
-    private static final Logger logger = LoggerFactory.getLogger(CaptchaImageCreateController.class);
 
     @RequestMapping("captcha.html")
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -32,7 +32,7 @@ public class CaptchaImageCreateController {
             RandomValidateCodeUtil randomValidateCode = new RandomValidateCodeUtil();
             randomValidateCode.getRandcode(request, response);//输出验证码图片方法
         } catch (Exception e) {
-            logger.error("获取验证码失败>>>>   ", e);
+            log.error("获取验证码失败>>>>   ", e);
         }
         return null;
     }

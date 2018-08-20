@@ -165,7 +165,7 @@ public abstract class BaseService<T> {
             for (String id : checkboxId) {
                 if (StringUtils.isNotBlank(id)) {
 //                    T obj = getBaseDao().findOne(id);
-                    T obj = getBaseDao().getOne(id);
+                    T obj = getBaseDao().findById(id).orElse(null);
                     if (obj != null) {
                         BaseDeleteBefore(id, obj);
                         getBaseDao().delete(obj);
@@ -191,7 +191,7 @@ public abstract class BaseService<T> {
     @Transactional(readOnly = true)
     public T findOne(String id) {
 //        return getBaseDao().findOne(id);
-        return getBaseDao().getOne(id);
+        return getBaseDao().findById(id).orElse(null);
     }
     @Transactional(readOnly = true)
     public List<T> findAll() {

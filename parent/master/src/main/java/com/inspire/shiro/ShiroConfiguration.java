@@ -1,6 +1,7 @@
 package com.inspire.shiro;
 
 import com.inspire.sys.UserRealm;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -16,6 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Configuration
+@Slf4j
 public class ShiroConfiguration {
 
 
@@ -24,7 +26,7 @@ public class ShiroConfiguration {
      */
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean shiroFilterFactoryBean(DefaultWebSecurityManager  securityManager) {
-//        logger.info("注入Shiro的Web过滤器-->shiroFilter", ShiroFilterFactoryBean.class);
+        log.info("注入Shiro的Web过滤器-->shiroFilter", ShiroFilterFactoryBean.class);
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 
         //Shiro的核心安全接口,这个属性是必须的
@@ -69,7 +71,7 @@ public class ShiroConfiguration {
      */
     @Bean
     public DefaultWebSecurityManager  securityManager(UserRealm userRealm) {
-//        Log.info("注入Shiro的Web过滤器-->securityManager", ShiroFilterFactoryBean.class);
+        log.info("注入Shiro的Web过滤器-->securityManager", ShiroFilterFactoryBean.class);
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         userRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         securityManager.setRealm(userRealm);

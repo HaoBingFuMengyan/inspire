@@ -15,6 +15,7 @@ public class MasterApplication {
 		try{
 			SpringApplication.run(MasterApplication.class, args);
 			log.info("Application：应用程序正常启动..."+new Date());
+			log.info("路径："+System.getProperty("user.dir"));
 		}catch(Exception e){
 			if(StringUtils.isNotBlank(e.getMessage())){
 				e.printStackTrace();

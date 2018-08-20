@@ -1,5 +1,6 @@
 package com.inspire.sys;
 
+import com.inspire.utils.RandomValidateCodeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -27,7 +29,7 @@ public class AdminController {
     }
 
     @PostMapping(value="login.html")
-    public String login(@Valid Operator operator, RedirectAttributes redirectAttributes, BindingResult bindingResult){
+    public String login(@Valid Operator operator, RedirectAttributes redirectAttributes, BindingResult bindingResult, HttpServletRequest request, HttpSession session){
         if (bindingResult.hasErrors()) {
             return "sys/login";
         }
@@ -43,6 +45,13 @@ public class AdminController {
             log.info("对用户[" + loginName + "]进行登录验证..验证开始");
             currentUser.login(token);
             log.info("对用户[" + loginName + "]进行登录验证..验证通过");
+
+            String checkCode = session.getAttribute(RandomValidateCodeUtil.KAPTCHA_SESSION_KEY).toString().trim();
+            if (!checkCode.equalsIgnoreCase(request.getParameter("checkcode").trim())) {
+                log.info("验证码不正确："+request.getParameter("checkcode").trim());
+                token.clear();
+                return "redirect:/login.html";
+            }
         } catch (UnknownAccountException uae) {
             log.info("对用户[" + loginName + "]进行登录验证..验证未通过,未知账户");
             redirectAttributes.addFlashAttribute("message", "未知账户");
@@ -90,7 +99,7 @@ public class AdminController {
     }
     @GetMapping(value = "main.shtml")
     public String main(Model model,HttpServletRequest request){
-        return "sys/shouye";
+        return "sys/main";
     }
 
     @RequestMapping(value = "news/newsList.shtml")

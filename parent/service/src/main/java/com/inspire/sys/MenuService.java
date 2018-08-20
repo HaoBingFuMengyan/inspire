@@ -62,7 +62,7 @@ public class MenuService extends BaseService<Menu> {
      */
     @Transactional(readOnly = true)
     public Menu getMenuById(String id) {
-        return menuDao.getOne(id);
+        return menuDao.findById(id).orElse(new Menu());
     }
 
     /**
@@ -97,7 +97,7 @@ public class MenuService extends BaseService<Menu> {
                 menu.setBisroot(0);
                 menu.setDadddate(T.now());
             }else{//修改
-                Menu menuObj = menuDao.getOne(id);
+                Menu menuObj = menuDao.findById(id).orElse(new Menu());
                 subMenu(menuObj.getId(),menuObj.getIsort(),menu.getIsort());
             }
             menuDao.save(menu);

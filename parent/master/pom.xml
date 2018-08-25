@@ -7,7 +7,7 @@
 	<groupId>com.inspire</groupId>
 	<artifactId>master</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>master</name>
 	<description>Demo project for Spring Boot</description>
@@ -30,16 +30,16 @@
 		</dependency>
 
 		<!--使用spring boot推荐的thymeleaf-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+		</dependency>-->
 		<!--layout 布局装饰-->
-		<dependency>
+		<!--<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 			<version>${thymeleaf-layout-dialect.version}</version>
-		</dependency>
+		</dependency>-->
 
 		<!-- 工具类 -->
 		<dependency>
@@ -114,16 +114,32 @@
 			<artifactId>gson</artifactId>
 		</dependency>
 
-		<!-- springboot 内置tomcat容器不支持jsp 引入外部tomact支持jsp web核心组件-->
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-		<!--</dependency>-->
+		<!--START-->
 		<!--spring boot 外部Tomact-->
-		<!--<dependency>-->
-			<!--<groupId>org.apache.tomcat.embed</groupId>-->
-			<!--<artifactId>tomcat-embed-jasper</artifactId>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+		<!--jstl-->
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- jstl-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>jstl-api</artifactId>
+		</dependency>
+		<!-- jstl-impl -->
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>jstl-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+		</dependency>
+		<!--END-->
 	</dependencies>
 
 	<!--添加打包插件-->

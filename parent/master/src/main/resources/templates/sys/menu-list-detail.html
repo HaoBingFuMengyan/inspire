@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:form="http://www.w3.org/1999/xhtml">
+>
 
 <head>
     <title>菜单管理</title>
@@ -59,12 +59,12 @@
         </div>
         <div class="ibox-content">
             <div class="row">
-                <form:form id="inputForm" modelAttribute="menu" th:action="@{/sys/menu/save.shtml}" method="post"
+                <form id="inputForm" th:object="${menu}" th:action="@{/sys/menu/save.shtml}" method="post"
                            class="form-horizontal">
-                    <form:hidden path="id"/>
-                    <form:hidden path="smenuno" value="${menu.smenuno}"/>
-                    <form:hidden path="bisleaf" value="${menu.bisleaf}"/>
-                    <form:hidden path="bisroot" value="${menu.bisroot}"/>
+                    <input type="hidden" id="id" name="id" th:value="*{id}"/>
+                    <input type="hidden" id="smenuno" name="smenuno" th:value="*{smenuno}"/>
+                    <input type="hidden" id="bisroot" name="bisroot" th:value="*{bisroot}"/>
+                    <input type="hidden" id="bisleaf" name="bisleaf" th:value="*{bisleaf}"/>
                     <!--<sys:message content="${message}"/>-->
                     <table class="table table-bordered  table-condensed dataTables-example dataTable no-footer">
                         <tbody>
@@ -78,7 +78,7 @@
                                                                  cssClass="form-control required"/>--></td>
                             <td class="width-15 active"><label class="pull-right"><font color="red">*</font> 名称:</label>
                             </td>
-                            <td class="width-35"><form:input path="sname" htmlEscape="false" maxlength="50"
+                            <td class="width-35"><input type="text" name="sname" id="sname" th:value="*{sname}" maxlength="50"
                                                              class="required form-control "/></td>
                         </tr>
                         <tr>
@@ -86,14 +86,14 @@
                             <td class="width-35"><!--<sys:iconselect id="icon" name="simagepath"
                                                                  value="${menu.simagepath}"/>--></td>
                             <td class="width-15 active"><label class="pull-right">菜单链接:</label></td>
-                            <td class="width-35"><form:input path="smenupath" htmlEscape="false" maxlength="2000"
+                            <td class="width-35"><input type="text" id="smenupath" name="smenupath" th:value="*{smenupath}" maxlength="2000"
                                                              class="form-control "/>
                                 <span class="help-inline">点击菜单跳转的页面</span></td>
                         </tr>
 
                         <tr>
                             <td class="width-15 active"><label class="pull-right">描述:</label></td>
-                            <td class="width-35"><form:textarea path="sremark" htmlEscape="false" rows="3"
+                            <td class="width-35"><textarea name="sremark" id="sremark" th:value="*{sremark}" rows="3"
                                                                 maxlength="200" class="form-control "/></td>
                             <td class="width-15 active"><label class="pull-right">排序:</label></td>
                             <td class="width-35"><input name="isort" type="number" value="${menu.isort}" min="0"
@@ -101,7 +101,7 @@
                         </tr>
                         </tbody>
                     </table>
-                </form:form>
+                </form>
             </div>
         </div>
     </div>

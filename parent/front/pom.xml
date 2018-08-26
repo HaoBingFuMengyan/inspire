@@ -21,6 +21,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- 移除嵌入式tomcat插件 -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -55,16 +62,24 @@
 			<artifactId>standard</artifactId>
 		</dependency>
 		<!--END-->
+		<!--servlet 依赖包-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
 	</dependencies>
 
+	<!--打包插件-->
 	<build>
+		<!--设置打包时的名称-->
+		<finalName>front-0.0.1-SNAPSHOT</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<executable>true</executable>
-				</configuration>
+				<!--<configuration>-->
+					<!--<executable>true</executable>-->
+				<!--</configuration>-->
 			</plugin>
 		</plugins>
 	</build>

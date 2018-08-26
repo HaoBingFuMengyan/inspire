@@ -73,13 +73,6 @@
             <!--<version>${spring-boot-starter-tomcat.version}</version>-->
             <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
             <!--</dependency>-->
-            <!-- servlet 依赖包 -->
-            <!--<dependency>-->
-            <!--<groupId>javax.servlet</groupId>-->
-            <!--<artifactId>javax.servlet-api</artifactId>-->
-            <!--<version>${javax.servlet-api.version}</version>-->
-            <!--&lt;!&ndash;<scope>provided</scope>&ndash;&gt;-->
-            <!--</dependency>-->
             <!-- 引入jsp  依赖的jar包-->
             <!--<dependency>-->
             <!--<groupId>javax.servlet.jsp</groupId>-->
@@ -250,6 +243,12 @@
                 <version>${standard.version}</version>
             </dependency>
             <!--END-->
+            <!--servlet 依赖包-->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

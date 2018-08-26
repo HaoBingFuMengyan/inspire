@@ -16,9 +16,10 @@ public class DataSourceConfiguration {
 
     @Bean(destroyMethod = "", name = "EmbeddeddataSource")
     public DataSource dataSource() {
+        String projectPath = System.getProperty("user.dir");
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("org.sqlite.JDBC");
-        dataSourceBuilder.url("jdbc:sqlite:" +System.getProperty("user.dir")+ "/inspire.db");
+        dataSourceBuilder.url("jdbc:sqlite:" +projectPath.substring(0,projectPath.lastIndexOf("/"))+ "/inspire.db");
         dataSourceBuilder.type(SQLiteDataSource.class);
         return dataSourceBuilder.build();
     }

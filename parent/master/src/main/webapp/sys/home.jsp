@@ -93,7 +93,10 @@
                             <a class="J_menuItem" href="${ctx}/sys/menu/index.shtml">菜单管理</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="${ctx}/role/index.shtml">DataTables</a>
+                            <a class="J_menuItem" href="">后台权限码管理</a>
+                        </li>
+                        <li>
+                            <a class="J_menuItem" href="${ctx}/sys/sequence/list.shtml">单据编号</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="table_jqgrid.html">jqGrid</a>

@@ -1,7 +1,6 @@
 package com.inspire.sys;
 
 import com.google.common.collect.Lists;
-import com.inspire.exception.E;
 import com.inspire.exception.ServiceException;
 import com.inspire.jpa.BaseDao;
 import com.inspire.jpa.BaseService;
@@ -18,14 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Component
-@Transactional
 public class SequenceService extends BaseService<Sequence> {
-    private SequenceDao sequenceDao;
-
     @Autowired
-    public void setSequenceDao(SequenceDao sequenceDao) {
-        this.sequenceDao = sequenceDao;
-    }
+    private SequenceDao sequenceDao;
 
     @Override
     protected Class<Sequence> getDomainClass() {
@@ -80,9 +74,9 @@ public class SequenceService extends BaseService<Sequence> {
         try{
             for (String id : checkboxId) {
                 if(StringUtils.isNotBlank(id)){
-                    if(sequenceDao.findById(id).orElse(new Sequence())!=null){
-                        sequenceDao.deleteById(id);
-                    }
+//                    if(sequenceDao.findById(id).orElse(new Sequence())!=null){
+//                        sequenceDao.deleteById(id);
+//                    }
                 }
             }
         }catch(Exception ex){
@@ -96,11 +90,13 @@ public class SequenceService extends BaseService<Sequence> {
      * 根据id获取单据编号对象
      * Sequence
      */
-    @Transactional(readOnly = true)
-    public Sequence getById(String id){
-        return sequenceDao.findById(id).orElse(new Sequence());
-    }
+//    @Transactional(readOnly = true)
+//    public Sequence getById(String id){
+//        return sequenceDao.findById(id).orElse(new Sequence());
+//    }
 
-
-
+//    @Override
+//    public Page<Sequence> listPage(Pageable page, Map<String, Object> searchParams) {
+//        return sequenceDao.findAll(page);
+//    }
 }

@@ -110,6 +110,15 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#"><i class="fa fa-table"></i>
+                        <span class="nav-label">商品管理</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a class="J_menuItem" href="${ctx}/sys/menu/index.shtml">商品列表</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>

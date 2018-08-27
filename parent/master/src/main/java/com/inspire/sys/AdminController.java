@@ -46,12 +46,12 @@ public class AdminController {
             currentUser.login(token);
             log.info("对用户[" + loginName + "]进行登录验证..验证通过");
 
-            String checkCode = session.getAttribute(RandomValidateCodeUtil.KAPTCHA_SESSION_KEY).toString().trim();
-            if (!checkCode.equalsIgnoreCase(request.getParameter("checkcode").trim())) {
-                log.info("验证码不正确："+request.getParameter("checkcode").trim());
-                token.clear();
-                return "redirect:/login.html";
-            }
+//            String checkCode = session.getAttribute(RandomValidateCodeUtil.KAPTCHA_SESSION_KEY).toString().trim();
+//            if (!checkCode.equalsIgnoreCase(request.getParameter("checkcode").trim())) {
+//                log.info("验证码不正确："+request.getParameter("checkcode").trim());
+//                token.clear();
+//                return "redirect:/login.html";
+//            }
         } catch (UnknownAccountException uae) {
             log.info("对用户[" + loginName + "]进行登录验证..验证未通过,未知账户");
             redirectAttributes.addFlashAttribute("message", "未知账户");

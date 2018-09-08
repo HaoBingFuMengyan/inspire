@@ -9,6 +9,7 @@
     <%@include file="/include/treetable.jsp" %>
     <script type="text/javascript">
         $(document).ready(function () {
+            focusmenu("菜单管理");
             $("#treeTable").treeTable({expandLevel : 1,column:1}).show();
         });
 

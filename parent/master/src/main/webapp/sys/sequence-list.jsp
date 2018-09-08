@@ -4,6 +4,7 @@
 <head>
 	<title>单据编号列表管理</title>
 	<meta name="decorator" content="default"/>
+	<%@include file="/include/head.jsp"%>
 	<script type="text/javascript">
 	$(function(){focusmenu('单据编号');});
 	

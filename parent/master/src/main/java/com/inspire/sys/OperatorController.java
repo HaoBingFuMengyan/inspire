@@ -22,6 +22,11 @@ public class OperatorController extends BaseController<Operator,Operator> {
     }
 
     @Override
+    protected String getDefaultSort() {
+        return "desc_soperatorno";
+    }
+
+    @Override
     protected String getPackName() {
         return "sys";
     }

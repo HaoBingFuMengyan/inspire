@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
@@ -31,5 +32,10 @@ public class JunitTest {
         Page<Sequence> pagelist = sequenceDao.findAll(new PageRequest(0,100));
 
         log.info(String.valueOf(pagelist.getContent().size()));
+
+        Specification<Sequence> spec = null;
+        Page<Sequence> page = sequenceDao.findAll(spec,new PageRequest(0,1000));
+
+        log.info(String.valueOf(page.getContent().size()));
     }
 }

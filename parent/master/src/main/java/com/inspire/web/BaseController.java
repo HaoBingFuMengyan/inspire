@@ -43,9 +43,7 @@ public abstract class BaseController<T, V> {
 
     protected abstract String getObjectName();
 
-    public String getDefaultSort() {
-        return "";
-    }
+    protected abstract String getDefaultSort();
 
     @ModelAttribute
     public void prepareSave(

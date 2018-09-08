@@ -73,17 +73,33 @@
 		</dependency>
 	</dependencies>
 
-	<!--打包插件-->
+	<!--添加打包插件-->
 	<build>
 		<!--设置打包时的名称-->
 		<finalName>front-0.0.1-SNAPSHOT</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!--<configuration>-->
-					<!--<executable>true</executable>-->
-				<!--</configuration>-->
+				<configuration>
+					<mainClass>com.inspire.FrontApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+
 			</plugin>
 		</plugins>
 	</build>

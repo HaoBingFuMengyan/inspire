@@ -48,6 +48,11 @@ public class MenuController extends BaseController<Menu, Menu> {
         return "menu-list";
     }
 
+    @Override
+    protected String getDefaultSort() {
+        return "desc_smenuno";
+    }
+
     /**
      * 菜单列表
      *

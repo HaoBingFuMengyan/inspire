@@ -32,6 +32,11 @@ public class SequenceController extends BaseController<Sequence, Sequence> {
         return "sequence-list";
     }
 
+    @Override
+    protected String getDefaultSort() {
+        return "desc_scode";
+    }
+
     /**
      *	验证代码是否存在
      */

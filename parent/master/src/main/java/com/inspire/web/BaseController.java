@@ -104,7 +104,6 @@ public abstract class BaseController<T, V> {
             s = sort.split("\\,");
         }
         PageRequest page = PageUtils.page(start, limit, s);
-        System.out.println(getBaseService());
         return getBaseService().listPage(page, searchParams);
 
     }

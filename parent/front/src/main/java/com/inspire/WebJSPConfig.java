@@ -25,7 +25,7 @@ public class WebJSPConfig  extends WebMvcConfigurerAdapter {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setViewClass(org.springframework.web.servlet.view.JstlView.class);
         // jsp目录
-        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setPrefix("/");
         // 后缀
         resolver.setSuffix(".jsp");
         return resolver;

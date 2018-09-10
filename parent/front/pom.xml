@@ -71,6 +71,31 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
+		<!--Springboot集成sqlite数据库，并使用jpa、Hibernate操作sqlite-->
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+		</dependency>
+		<!--引入模块-->
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>heart</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>dao</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>po</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.inspire</groupId>
+			<artifactId>service</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!--添加打包插件-->

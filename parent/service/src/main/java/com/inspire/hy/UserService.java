@@ -24,4 +24,8 @@ public class UserService extends BaseService<User>{
     protected void BaseSaveCheck(User obj) {
 
     }
+
+    public User findBySusername(String susername){
+        return this.userDao.findBySusername(susername);
+    }
 }

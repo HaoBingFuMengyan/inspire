@@ -1,5 +1,7 @@
 package com.inspire.sys;
 
+import com.inspire.hy.User;
+import com.inspire.hy.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -18,11 +20,11 @@ public abstract class AbstractUserRealm extends AuthorizingRealm {
 
 
     @Autowired
-    private OperatorService operatorService;
+    private UserService userService;
     //获取用户组的权限信息
-    public abstract UserRolesAndPermissions doGetGroupAuthorizationInfo(Operator userInfo);
+    public abstract UserRolesAndPermissions doGetGroupAuthorizationInfo(User userInfo);
     //获取用户角色的权限信息
-    public abstract UserRolesAndPermissions doGetRoleAuthorizationInfo(Operator userInfo);
+    public abstract UserRolesAndPermissions doGetRoleAuthorizationInfo(User userInfo);
 
     /**
      * 获取授权信息，判断用户是否拥有某个权限
@@ -33,7 +35,7 @@ public abstract class AbstractUserRealm extends AuthorizingRealm {
         Set<String> userRoles = new HashSet<>();
         Set<String> userPermissions = new HashSet<>();
         //从数据库中获取当前登录用户的详细信息
-        Operator userInfo = operatorService.findBySusername(currentLoginName);
+        User userInfo = userService.findBySusername(currentLoginName);
         if (null != userInfo) {
             UserRolesAndPermissions groupContainer = doGetGroupAuthorizationInfo(userInfo);
             UserRolesAndPermissions roleContainer = doGetGroupAuthorizationInfo(userInfo);
@@ -61,13 +63,10 @@ public abstract class AbstractUserRealm extends AuthorizingRealm {
         //UsernamePasswordToken对象用来存放提交的登录信息
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
         //查出是否有此用户
-        Operator operator = operatorService.findBySusername(token.getUsername());
-//        Operator operator = new Operator();
-//        operator.setSusername("admin");
-//        operator.setSpassword("e10adc3949ba59abbe56e057f20f883e");
-        if (operator != null) {
+        User user = userService.findBySusername(token.getUsername());
+        if (user != null) {
             // 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验
-            return new SimpleAuthenticationInfo(operator.getSusername(), operator.getSpassword(), getName());
+            return new SimpleAuthenticationInfo(user.getSusername(), user.getSpassword(), getName());
         }
         return null;
     }

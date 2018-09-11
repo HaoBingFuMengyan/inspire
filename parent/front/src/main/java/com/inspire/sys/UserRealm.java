@@ -1,5 +1,6 @@
 package com.inspire.sys;
 
+import com.inspire.hy.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 public class UserRealm extends AbstractUserRealm {
 
 	@Override
-	public UserRolesAndPermissions doGetGroupAuthorizationInfo(Operator userInfo) {
+	public UserRolesAndPermissions doGetGroupAuthorizationInfo(User userInfo) {
 		Set<String> userRoles = new HashSet<>();
         Set<String> userPermissions = new HashSet<>();
         //TODO 获取当前用户下拥有的所有角色列表,及权限
@@ -21,7 +22,7 @@ public class UserRealm extends AbstractUserRealm {
 	}
 
 	@Override
-	public UserRolesAndPermissions doGetRoleAuthorizationInfo(Operator userInfo) {
+	public UserRolesAndPermissions doGetRoleAuthorizationInfo(User userInfo) {
 		Set<String> userRoles = new HashSet<>();
         Set<String> userPermissions = new HashSet<>();
         //TODO 获取当前用户下拥有的所有角色列表,及权限

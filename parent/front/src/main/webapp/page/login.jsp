@@ -19,12 +19,6 @@
 
     <script type="text/javascript" src="${ctxStatic}/js/modernizr.custom.86080.js"></script>
 
-    <script type="text/javascript">
-        function doSubmit(){
-            return ;
-        }
-    </script>
-
 </head>
 
 <body>
@@ -58,8 +52,8 @@
                         <input name="spassword" type="password" class="form-control" id="contact_spassword"
                                placeholder="请输入密码" required/>
                     </div>
-                    <div class="col-md-5 col-sm-5 col-xs-5">
-                        <button type="submit" onclick="return doSubmit();" class="tm-btn-subscribe">Sign In</button>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <button type="submit" class="tm-btn-subscribe">Sign In</button>
                     </div>
 
                 </div>

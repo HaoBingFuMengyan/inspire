@@ -96,12 +96,13 @@ p {
 }
 .tm-btn-subscribe {
 	background-color: #006699;
-	border-radius: .5rem;
+	border-radius: 2.5rem;
     border-color: white;
 	padding: 0.75rem 1.6rem;
     font-weight: 300;
     font-size: 1.4rem;
     cursor: pointer;
+    width:100%;
 }
 
 .tm-btn-subscribe:hover {

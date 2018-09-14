@@ -19,6 +19,12 @@
 
     <script type="text/javascript" src="${ctxStatic}/js/modernizr.custom.86080.js"></script>
 
+    <script type="text/javascript">
+        function doSubmit(){
+            return ;
+        }
+    </script>
+
 </head>
 
 <body>
@@ -26,11 +32,11 @@
 <div id="particles-js"></div>
 
 <ul class="cb-slideshow">
-    <li>fff</li>
-    <li>www</li>
     <li></li>
-    <li>sss</li>
-    <li>ff</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
     <li></li>
 </ul>
 
@@ -41,15 +47,19 @@
             <P class="mb-5">A sign-up letter template with three background images shuffling by fade in out movements.
                 Thank you for visiting our site!</P>
 
-            <form action="#" method="get" class="subscribe-form">
+            <form action="${ctx}/login.html" method="post" class="subscribe-form">
                 <div class="row form-section">
 
                     <div class="col-md-7 col-sm-7 col-xs-7">
-                        <input name="email" type="text" class="form-control" id="contact_email"
-                               placeholder="Your Email..." required/>
+                        <input name="susername" type="text" class="form-control" id="contact_susername"
+                               placeholder="请输入用户名" required/>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-7">
+                        <input name="spassword" type="password" class="form-control" id="contact_spassword"
+                               placeholder="请输入密码" required/>
                     </div>
                     <div class="col-md-5 col-sm-5 col-xs-5">
-                        <button type="submit" class="tm-btn-subscribe">Subscribe</button>
+                        <button type="submit" onclick="return doSubmit();" class="tm-btn-subscribe">Sign In</button>
                     </div>
 
                 </div>
@@ -64,13 +74,13 @@
 
         </div>
     </div>
-    <div class="footer-link">
-        <p>Copyright © 2018 Your Company
+    <%--<div class="footer-link">--%>
+        <%--<p>Copyright © 2018 Your Company--%>
 
-            - Design: <a rel="nofollow" href="#" target="_parent">Templatemo</a></p>
-        <p>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-    </div>
+            <%--- Design: <a rel="nofollow" href="#" target="_parent">Templatemo</a></p>--%>
+        <%--<p>More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a--%>
+                <%--href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>--%>
+    <%--</div>--%>
 </div>
 </body>
 <script type="text/javascript" src="${ctxStatic}/js/particles.js"></script>

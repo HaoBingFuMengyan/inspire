@@ -1,14 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: haobingfu
-  Date: 2018/9/8
-  Time: 21:41
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/include/taglib.jsp" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>企业微信点餐系统---首页</title>
 </head>
 <body>
 ${model}

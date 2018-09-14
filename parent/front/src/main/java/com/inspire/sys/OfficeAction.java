@@ -31,7 +31,7 @@ public class OfficeAction {
         if (SecurityUtils.getSubject().isAuthenticated())
             return "redirect:/index.html";
         else
-            return "hy/login";
+            return "page/login";
     }
 
     @RequestMapping(value = "index.html",method = RequestMethod.GET)
@@ -41,7 +41,7 @@ public class OfficeAction {
 
     @RequestMapping(value = "logout.shtml",method = RequestMethod.GET)
     public String logout(){
-        return "hy/login";
+        return "page/login";
     }
 
     @RequestMapping(value = "register.html",method = RequestMethod.GET)
@@ -53,7 +53,7 @@ public class OfficeAction {
     @PostMapping(value="login.html")
     public String login(@Valid User user, RedirectAttributes redirectAttributes, BindingResult bindingResult, HttpServletRequest request, HttpSession session){
         if (bindingResult.hasErrors()) {
-            return "hy/login";
+            return "page/login";
         }
         String loginName = user.getSusername();
         log.info("准备登陆用户 => {}", loginName);

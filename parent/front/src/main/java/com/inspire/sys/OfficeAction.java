@@ -39,6 +39,11 @@ public class OfficeAction {
         return "page/index";
     }
 
+    @RequestMapping(value = "index.shtml",method = RequestMethod.GET)
+    public String pageIndex(Model model){
+        return "page/page";
+    }
+
     @RequestMapping(value = "logout.shtml",method = RequestMethod.GET)
     public String logout(){
         return "page/login";

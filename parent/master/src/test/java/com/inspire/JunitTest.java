@@ -3,7 +3,9 @@ package com.inspire;
 
 import com.inspire.sys.Sequence;
 import com.inspire.sys.SequenceDao;
+import com.inspire.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.util.DateUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +39,8 @@ public class JunitTest {
         Page<Sequence> page = sequenceDao.findAll(spec,new PageRequest(0,1000));
 
         log.info(String.valueOf(page.getContent().size()));
+
+        log.info(DateUtils.getCurrentTimeNumber());
+        log.info(DateUtils.getCurrentTimeNumberRandom());
     }
 }

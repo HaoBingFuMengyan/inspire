@@ -1,5 +1,6 @@
 package com.inspire.hy;
 
+import com.inspire.exception.E;
 import com.inspire.exception.ServiceException;
 import com.inspire.vo.hy.TRegister;
 import com.inspire.web.Msg;
@@ -22,7 +23,7 @@ public class UserAction {
     @RequestMapping(value = "register.html", method = RequestMethod.POST)
     public String register(TRegister t, Model model, HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttributes) {
         try {
-
+            this.userService.register(t);
             return "page/register-ok";
         }catch (ServiceException ex){
             ex.printStackTrace();
@@ -31,8 +32,8 @@ public class UserAction {
             e.printStackTrace();
             Msg.error(model,"系统错误，请联系管理员");
         }
-        redirectAttributes.addAttribute("data",t);
-        return "redirect:/register.html";
+        model.addAttribute("data",t);
+        return "page/register";
     }
 
 

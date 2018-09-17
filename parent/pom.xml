@@ -50,6 +50,7 @@
         <jstl.version>1.2</jstl.version>
         <jsp-api.version>2.2</jsp-api.version>
         <standard.version>1.1.2</standard.version>
+        <sitemesh.version>3.0.1</sitemesh.version>
 
     </properties>
 
@@ -248,6 +249,12 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${javax.servlet-api.version}</version>
+            </dependency>
+            <!--页面装饰器包-->
+            <dependency>
+                <groupId>org.sitemesh</groupId>
+                <artifactId>sitemesh</artifactId>
+                <version>${sitemesh.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

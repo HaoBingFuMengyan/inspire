@@ -1,4 +1,4 @@
-package com.inspire;
+package com.inspire.config;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

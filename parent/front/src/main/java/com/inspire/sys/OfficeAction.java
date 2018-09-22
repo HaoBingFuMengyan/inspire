@@ -7,6 +7,7 @@ import com.inspire.vo.hy.TRegister;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -40,8 +41,9 @@ public class OfficeAction {
     }
 
     @RequestMapping(value = "index.shtml",method = RequestMethod.GET)
-    public String pageIndex(Model model){
-        return "page/page";
+    @RequiresAuthentication
+    public String ofIndex(Model model){
+        return "of/index";
     }
 
     @RequestMapping(value = "logout.shtml",method = RequestMethod.GET)

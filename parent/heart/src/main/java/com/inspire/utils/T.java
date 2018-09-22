@@ -47,9 +47,10 @@ public class T {
         return snow("yyyy-MM-dd hh:mm:ss");
     }
 
-//    public static boolean isDebug() {
+    public static boolean isDebug() {
 //        return "true".equals(Props.get("debug"));
-//    }
+        return true;
+    }
 
     public static Date Date() {
         return DateUtils.getToday();

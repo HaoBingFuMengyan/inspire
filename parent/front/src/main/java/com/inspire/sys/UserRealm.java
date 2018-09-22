@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Component
 @Slf4j
-public class UserRealm extends AbstractUserRealm {
+public class UserRealm extends ShiroDbRealm {
 
 	@Override
 	public UserRolesAndPermissions doGetGroupAuthorizationInfo(User userInfo) {

@@ -2,6 +2,10 @@ package com.inspire.sys;
 
 import com.inspire.hy.User;
 import com.inspire.hy.UserService;
+import com.inspire.securityShiro.ILoginService;
+import com.inspire.securityShiro.ILoginUser;
+import com.inspire.securityShiro.ShiroUsernamePasswordToken;
+import com.inspire.utils.B;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -16,15 +20,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
-public abstract class AbstractUserRealm extends AuthorizingRealm {
-
+public class ShiroDbRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
-    //获取用户组的权限信息
-    public abstract UserRolesAndPermissions doGetGroupAuthorizationInfo(User userInfo);
-    //获取用户角色的权限信息
-    public abstract UserRolesAndPermissions doGetRoleAuthorizationInfo(User userInfo);
+
+    protected ILoginService loginService;
+
+    public void setLoginService(ILoginService loginService) {
+        this.loginService = loginService;
+    }
+
+//    //获取用户组的权限信息
+//    public abstract UserRolesAndPermissions doGetGroupAuthorizationInfo(User userInfo);
+//    //获取用户角色的权限信息
+//    public abstract UserRolesAndPermissions doGetRoleAuthorizationInfo(User userInfo);
 
     /**
      * 获取授权信息，判断用户是否拥有某个权限
@@ -37,12 +47,12 @@ public abstract class AbstractUserRealm extends AuthorizingRealm {
         //从数据库中获取当前登录用户的详细信息
         User userInfo = userService.findBySusername(currentLoginName);
         if (null != userInfo) {
-            UserRolesAndPermissions groupContainer = doGetGroupAuthorizationInfo(userInfo);
-            UserRolesAndPermissions roleContainer = doGetGroupAuthorizationInfo(userInfo);
-            userRoles.addAll(groupContainer.getUserRoles());
-            userRoles.addAll(roleContainer.getUserRoles());
-            userPermissions.addAll(groupContainer.getUserPermissions());
-            userPermissions.addAll(roleContainer.getUserPermissions());
+//            UserRolesAndPermissions groupContainer = doGetGroupAuthorizationInfo(userInfo);
+//            UserRolesAndPermissions roleContainer = doGetGroupAuthorizationInfo(userInfo);
+//            userRoles.addAll(groupContainer.getUserRoles());
+//            userRoles.addAll(roleContainer.getUserRoles());
+//            userPermissions.addAll(groupContainer.getUserPermissions());
+//            userPermissions.addAll(roleContainer.getUserPermissions());
         } else {
             throw new AuthorizationException();
         }
@@ -55,20 +65,27 @@ public abstract class AbstractUserRealm extends AuthorizingRealm {
     }
 
     /**
-     * 登录认证
+     * 授权认证回掉方法，登录是调用
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(
             AuthenticationToken authenticationToken) throws AuthenticationException {
-        //UsernamePasswordToken对象用来存放提交的登录信息
-        UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+        //ShiroUsernamePasswordToken(UsernamePasswordToken)对象用来存放提交的登录信息
+        ShiroUsernamePasswordToken token = (ShiroUsernamePasswordToken) authenticationToken;
         //查出是否有此用户
-        User user = userService.findBySusername(token.getUsername());
-        if (user != null) {
-            // 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验
-            return new SimpleAuthenticationInfo(user.getSusername(), user.getSpassword(), getName());
+//        User user = userService.findBySusername(token.getUsername());
+        if (!(token.getUsertype() == ShiroUsernamePasswordToken.UserType.open)) {
+            token.CheckCaptcha();
         }
-        return null;
+        ILoginUser user = loginService.getIUser(token);
+        if (user != null) {
+            if (B.Y(user.getPassword()))
+                return null;
+            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), null, getName());
+            return info;
+        } else {
+            return null;
+        }
     }
 
     protected class UserRolesAndPermissions {

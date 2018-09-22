@@ -56,7 +56,7 @@
                 <li class="layui-nav-item"><%--layui-nav-itemed 样式默认展开菜单--%>
                     <a class="" href="javascript:;">会员管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="http://www.baidu.com">会员认证</a></dd>
+                        <dd><a href="${ctx}/hy/member/index.shtml">会员认证</a></dd>
                         <dd><a href="javascript:;">店铺信息</a></dd>
                         <dd><a href="javascript:;">员工账号</a></dd>
                         <dd><a href="javascript:;">登录密码</a></dd>

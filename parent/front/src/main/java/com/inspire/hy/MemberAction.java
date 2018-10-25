@@ -1,5 +1,7 @@
 package com.inspire.hy;
 
+import com.inspire.lg.LoginUser;
+import com.inspire.securityShiro.ShiroUtils;
 import com.inspire.web.Msg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,18 +27,18 @@ public class MemberAction {
      * @param request
      * @return
      */
-//    @RequestMapping(value = "authapply.shtml",method = RequestMethod.GET)
-//    public String authApply(Authapply apply, @RequestParam(defaultValue = "0") int type, Model model, ServletRequest request) {
-//        LoginUser user = ShiroUtils.getCurrentUser();
-//        try {
+    @RequestMapping(value = "authapply.shtml",method = RequestMethod.GET)
+    public String authApply(Authapply apply, @RequestParam(defaultValue = "0") int type, Model model, ServletRequest request) {
+        LoginUser user = ShiroUtils.getCurrentUser();
+        try {
 //            Authapply authapply = authapplyService.findLastApply(user.getMemberId());
 //            if(authapply!=null && type!=500){
 //                apply=authapply;
 //            }
-//        } catch (Exception e) {
-//            Msg.error(model, "系统异常，请联系管理员");
-//            e.printStackTrace();
-//        }
+        } catch (Exception e) {
+            Msg.error(model, "系统异常，请联系管理员");
+            e.printStackTrace();
+        }
 //        model.addAttribute("data", apply);
 //        model.addAttribute("user",user);
 //        String  sbusinessno=null;
@@ -50,7 +52,8 @@ public class MemberAction {
 //            return "member/authapply";
 //        else
 //            return "member/authapplyed";
-//    }
+        return "member/authapply";
+    }
 
     /**
      *

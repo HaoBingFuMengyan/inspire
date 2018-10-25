@@ -3,6 +3,7 @@ package com.inspire.sys;
 
 import com.inspire.hy.User;
 import com.inspire.persistence.PageUtils;
+import com.inspire.securityShiro.ShiroUsernamePasswordToken;
 import com.inspire.vo.hy.TRegister;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -64,7 +65,8 @@ public class OfficeAction {
         }
         String loginName = user.getSusername();
         log.info("准备登陆用户 => {}", loginName);
-        UsernamePasswordToken token = new UsernamePasswordToken(loginName,user.getSpassword());
+
+        ShiroUsernamePasswordToken token = new ShiroUsernamePasswordToken(loginName,user.getSpassword(),true, request.getRemoteHost(), ShiroUsernamePasswordToken.UserType.open, null);
         //获取当前的Subject
         Subject currentUser = SecurityUtils.getSubject();
         try {

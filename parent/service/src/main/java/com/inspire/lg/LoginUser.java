@@ -50,11 +50,6 @@ public class LoginUser implements Serializable, ILoginUser {
 
 	}
 
-	private String departmentid;
-
-	// public String getDepartmentid() {
-	// return departmentid;
-	// }
 	private String id;
 	private String loginName;
 	private String name;

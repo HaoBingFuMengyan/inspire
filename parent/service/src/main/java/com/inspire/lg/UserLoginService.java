@@ -1,10 +1,7 @@
 package com.inspire.lg;
 
 import com.google.common.collect.Sets;
-import com.inspire.hy.Member;
-import com.inspire.hy.MemberDao;
-import com.inspire.hy.User;
-import com.inspire.hy.UserDao;
+import com.inspire.hy.*;
 import com.inspire.securityShiro.ILoginService;
 import com.inspire.securityShiro.ILoginUser;
 import com.inspire.securityShiro.ShiroUsernamePasswordToken;
@@ -12,8 +9,7 @@ import com.inspire.utils.Consts;
 import com.inspire.utils.DateUtils;
 import com.inspire.utils.StringHelper;
 import com.inspire.utils.T;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,14 +27,13 @@ import java.util.HashSet;
 // Spring Service Bean的标识.
 @Component
 @Transactional
+@Slf4j
 public class UserLoginService implements ILoginService {
-
-	private static Logger logger = LoggerFactory.getLogger(UserLoginService.class);
 
 	@Autowired
 	private UserDao userDao;
-//	@Autowired
-//	private SinglepointloginDao singlepointloginDao;
+	@Autowired
+	private SinglepointloginDao singlepointloginDao;
 	@Autowired
 	private MemberDao memberDao;
 
@@ -96,7 +91,7 @@ public class UserLoginService implements ILoginService {
 				rs.add(b.trim());
 			}
 		}
-		logger.info("所有权限:" + rs.toString());
+		log.info("所有权限:" + rs.toString());
 		return rs;
 	}
 

@@ -1,6 +1,6 @@
 package com.inspire.shiro;
 
-import com.inspire.sys.UserRealm;
+import com.inspire.sys.ShiroDbRealm;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
@@ -73,11 +73,12 @@ public class ShiroConfiguration {
      * 不指定名字的话，自动创建一个方法名第一个字母小写的bean * @Bean(name = "securityManager") * @return
      */
     @Bean
-    public DefaultWebSecurityManager  securityManager(UserRealm userRealm) {
+    public DefaultWebSecurityManager  securityManager() {
         log.info("注入Shiro的Web过滤器-->securityManager", ShiroFilterFactoryBean.class);
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        userRealm.setCredentialsMatcher(hashedCredentialsMatcher());
-        securityManager.setRealm(userRealm);
+        ShiroDbRealm shiroDbRealm = new ShiroDbRealm();
+        shiroDbRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        securityManager.setRealm(shiroDbRealm);
         //注入缓存管理器;
         securityManager.setCacheManager(ehCacheManager());//这个如果执行多次，也是同样的一个对象;
         return securityManager;

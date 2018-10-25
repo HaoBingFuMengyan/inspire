@@ -1,67 +1,50 @@
 package com.inspire.sys;
 
-import com.inspire.hy.User;
-import com.inspire.hy.UserService;
 import com.inspire.securityShiro.ILoginService;
 import com.inspire.securityShiro.ILoginUser;
 import com.inspire.securityShiro.ShiroUsernamePasswordToken;
 import com.inspire.utils.B;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
-import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Set;
 
 @Slf4j
 public class ShiroDbRealm extends AuthorizingRealm {
 
     @Autowired
-    private UserService userService;
-
     protected ILoginService loginService;
 
-    public void setLoginService(ILoginService loginService) {
-        this.loginService = loginService;
-    }
-
-//    //获取用户组的权限信息
-//    public abstract UserRolesAndPermissions doGetGroupAuthorizationInfo(User userInfo);
-//    //获取用户角色的权限信息
-//    public abstract UserRolesAndPermissions doGetRoleAuthorizationInfo(User userInfo);
 
     /**
-     * 获取授权信息，判断用户是否拥有某个权限
+     * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用.
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String currentLoginName = (String) principals.getPrimaryPrincipal();
-        Set<String> userRoles = new HashSet<>();
-        Set<String> userPermissions = new HashSet<>();
-        //从数据库中获取当前登录用户的详细信息
-        User userInfo = userService.findBySusername(currentLoginName);
-        if (null != userInfo) {
-//            UserRolesAndPermissions groupContainer = doGetGroupAuthorizationInfo(userInfo);
-//            UserRolesAndPermissions roleContainer = doGetGroupAuthorizationInfo(userInfo);
-//            userRoles.addAll(groupContainer.getUserRoles());
-//            userRoles.addAll(roleContainer.getUserRoles());
-//            userPermissions.addAll(groupContainer.getUserPermissions());
-//            userPermissions.addAll(roleContainer.getUserPermissions());
-        } else {
-            throw new AuthorizationException();
-        }
-        //为当前用户设置角色和权限
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        authorizationInfo.addRoles(userRoles);
-        authorizationInfo.addStringPermissions(userPermissions);
-        log.info("###【获取角色成功】[SessionId] => {}", SecurityUtils.getSubject().getSession().getId());
-        return authorizationInfo;
+        ILoginUser user = (ILoginUser) principals.getPrimaryPrincipal();
+
+        // User user = userService.findUserByLoginName(shiroUser.loginName);
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+        Collection<String> permissions;
+
+        permissions = loginService.getUserPurview(user);
+
+        info.addStringPermissions(permissions);
+
+        Collection<String> roles = loginService.getUserRole(user);
+        info.addRoles(roles);
+        loginService.DoLoginOk(user);
+        // loginService.doLoginIntegral(user);
+        return info;
     }
 
     /**

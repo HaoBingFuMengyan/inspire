@@ -4,6 +4,7 @@ package com.inspire;
 import com.inspire.sys.Sequence;
 import com.inspire.sys.SequenceDao;
 import com.inspire.utils.DateUtils;
+import com.inspire.webUtils.HttpRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.DateUtil;
 import org.junit.Test;
@@ -42,5 +43,8 @@ public class JunitTest {
 
         log.info(DateUtils.getCurrentTimeNumber());
         log.info(DateUtils.getCurrentTimeNumberRandom());
+
+        String res = HttpRequest.sendPost("http://mall.meiliangzi.cn/mb/stock/list.jhtml","pageSize=12");
+        System.out.println(res);
     }
 }
